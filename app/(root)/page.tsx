@@ -1,9 +1,36 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import Link from "next/link";
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
+import { getCurrentUser } from "@/lib/actions/auth.action";
+import { getInterviewsByUserId, getLatestInterviews } from "@/lib/actions/general.action";
+import InterviewCard from "@/components/InterviewCard";
 
 async function Home() {
+  const user = await getCurrentUser();
+  
+/**
+ * Fetches both user-specific interviews and latest interviews concurrently using Promise.all()
+ * 
+ * @description
+ * - Promise.all() executes multiple promises in parallel, improving performance
+ * - Uses array destructuring to map results to respective variables
+ * - Order of destructured variables must match order of promises in the array
+ * 
+ * Alternative sequential approach (slower):
+ * const userInterviews = await getInterviewsByUserId(user?.id!);
+ * const allInterview = await getLatestInterviews({ userId: user?.id! });
+ * 
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all Promise.all()}
+ */
+  const [userInterviews, allInterview] = await Promise.all([
+    getInterviewsByUserId(user?.id!),
+    getLatestInterviews({ userId: user?.id! }),
+  ]);
+
+  const hasPastInterviews = userInterviews?.length! > 0;
+  const hasUpcomingInterviews = allInterview?.length! > 0;
 
   return (
     <>
@@ -26,6 +53,50 @@ async function Home() {
           height={400}
           className="max-sm:hidden"
         />
+      </section>
+
+      <section className="flex flex-col gap-6 mt-8">
+        <h2>Your Interviews</h2>
+
+        <div className="interviews-section">
+          {hasPastInterviews ? (
+            userInterviews?.map((interview) => (
+              <InterviewCard
+                key={interview.id}
+                userId={user?.id}
+                interviewId={interview.id}
+                role={interview.role}
+                type={interview.type}
+                techstack={interview.techstack}
+                createdAt={interview.createdAt}
+              />
+            ))
+          ) : (
+            <p>You haven&apos;t taken any interviews yet</p>
+          )}
+        </div>
+      </section>
+
+      <section className="flex flex-col gap-6 mt-8">
+        <h2>Take Interviews</h2>
+
+        <div className="interviews-section">
+          {hasUpcomingInterviews ? (
+            allInterview?.map((interview) => (
+              <InterviewCard
+                key={interview.id}
+                userId={user?.id}
+                interviewId={interview.id}
+                role={interview.role}
+                type={interview.type}
+                techstack={interview.techstack}
+                createdAt={interview.createdAt}
+              />
+            ))
+          ) : (
+            <p>There are no interviews available</p>
+          )}
+        </div>
       </section>
 
     </>
