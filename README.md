@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Voice Agent Interview Platform
 
-## Getting Started
+An innovative open-source platform that combines AI and voice technology to provide automated technical interviews, feedback, and assessment capabilities.
 
-First, run the development server:
+## 🌟 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **AI-Powered Interviews**: Generate role-specific interview questions using Google's Gemini AI
+- **Voice Interaction**: Natural conversation flow with AI voice agent
+- **Smart Feedback**: Automated, comprehensive feedback on interview performance
+- **Customizable Sessions**:
+  - Technical and behavioral interview types
+  - Experience level adaptation
+  - Tech stack-specific questions
+- **Secure Authentication**: Firebase-based user management
+- **Interview History**: Track and review past interviews
+- **Real-time Assessment**: Instant feedback and scoring across multiple competencies
+
+## 🚀 Tech Stack
+
+- **Frontend**: Next.js 15.2.3, React 19
+- **Backend**: Firebase (Authentication & Firestore)
+- **AI Integration**: Google Gemini AI
+- **Voice Technology**: VAPI AI
+- **Styling**: TailwindCSS
+- **Type Safety**: TypeScript
+
+## 📋 Prerequisites
+
+- Node.js (v18 or higher)
+- Firebase Account
+- Google Cloud Account (for Gemini AI)
+- VAPI AI Account
+
+## ⚙️ Environment Variables
+
+Create a `.env.local` file in the root directory:
+
+```plaintext
+# Firebase Config
+NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_auth_domain
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=your_measurement_id
+
+# Firebase Admin
+FIREBASE_PROJECT_ID=your_project_id
+FIREBASE_CLIENT_EMAIL=your_client_email
+FIREBASE_PRIVATE_KEY=your_private_key
+
+# AI Services
+GEMINI_API_KEY=your_gemini_api_key
+VAPI_API_KEY=your_vapi_api_key
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+git clone https://github.com/XDevRabi/AI_Voice_Agent_FullStack_Interview_Platform_App.git
+cd AI_Voice_Agent_FullStack_Interview_Platform_App
+```
 
-## Learn More
+2. Install dependencies:
+```bash
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+3. Run the development server:
+```bash
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Open http://localhost:3000 in your browser
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🏗️ Project Structure
 
-## Deploy on Vercel
+```plaintext
+AI_Voice_Agent_FullStack_Interview_Platform_App/
+├── app/                    # Next.js app directory
+│   ├── api/               # API routes
+│   └── ...                # Page components
+├── components/            # Reusable components
+├── lib/                   # Utility functions and actions
+├── firebase/             # Firebase configuration
+├── public/               # Static assets
+└── types/                # TypeScript type definitions
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🤝 Contributing
+We welcome contributions! Please follow these steps:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Fork the repository
+2. Create a feature branch ( git checkout -b feature/AmazingFeature )
+3. Commit your changes ( git commit -m 'Add some AmazingFeature' )
+4. Push to the branch ( git push origin feature/AmazingFeature )
+5. Open a Pull Request
+
+## 📜 License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgments
+- Google Gemini AI for powering our question generation
+- VAPI AI for voice interaction capabilities
+- Firebase for backend services
+- All contributors who help improve this platform
+
+## 🙌 Special Thanks
+Special heartfelt thanks to [JSMastery](https://beta.jsmastery.pro/) for being an incredible source of inspiration and knowledge. Your dedication to teaching and sharing expertise has been invaluable. I'm truly grateful! ❤️🙏✨
