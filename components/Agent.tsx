@@ -188,13 +188,11 @@ const Agent = ({
         {/* User Profile Card */}
         <div className="card-border">
           <div className="card-content">
-            <Image
-              src="/user-avatar.png"
-              alt="profile-image"
-              width={539}
-              height={539}
-              className="rounded-full object-cover size-[120px]"
-            />
+            <div className="rounded-full bg-blue-500 size-[120px] flex items-center justify-center">
+              <span className="text-4xl text-white font-semibold">
+                {userName?.charAt(0).toUpperCase()}
+              </span>
+            </div>
             <h3>{userName}</h3>
           </div>
         </div>
